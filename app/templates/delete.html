@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<form action="" method="post">
+<div class="container text-center mt-5">
+
+    <div class="row justify-content-md-center mt-5">
+        <div class="col col-lg-1 mt-2">
+         API:
+        </div>
+        <div class="col col-lg-3">
+         <select class="form-select" name="site">
+                <option selected>http://127.0.0.1:8000/items/{id}/delete</option>
+              </select>
+        </div>
+    </div>
+
+    <div class="row justify-content-md-center mt-5">
+        <div class="col col-lg-1 mt-2">
+         ID:
+        </div>
+        <div class="col col-lg-3">
+            <div class="d-grid gap-2">
+            <input type="number" min="0" name="id" value="">
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-md-center mt-5">
+        <div class="col col-lg-1 mt-2">
+        DELETE:
+        </div>
+        <div class="col col-lg-3">
+            <div class="d-grid gap-2">
+            <input type="submit" class="btn btn-danger" onclick="this.form.submit(); this.disabled=true; this.value='In process…';" value="DELETE DATA">
+                </div>
+         </div>
+    </div>
+</div>
+    </form>
+<div class="container text-center mt-5">
+<div class="row justify-content-md-center mt-5">
+        <div class="col col-lg-6 mt-2">
+           <div class="col force-overflow" style="overflow: scroll;height: 550px">
+            {%  for el in api_answer['result'] %}
+                    <li>{{el}}</li>
+            {% endfor %}
+        </div>
+   </div>
+</div>
+</div>
+{% endblock %}

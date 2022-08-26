@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<form action="" method="post">
+<div class="container text-center mt-5">
+
+    <div class="row justify-content-md-center mt-5">
+        <div class="col col-lg-1 mt-2">
+         API:
+        </div>
+        <div class="col col-lg-3">
+         <select class="form-select" name="site">
+                <option selected>http://127.0.0.1:8000/items/</option>
+              </select>
+        </div>
+    </div>
+
+    <div class="row justify-content-md-center mt-5">
+        <div class="col col-lg-1 mt-2">
+         CATEGORY<span style="color: red">*</span>:
+        </div>
+        <div class="col col-lg-3">
+         <select class="form-select" name="category">
+                <option value="phone" selected>Phone</option>
+                <option value="notebook">Notebook</option>
+                <option value="powerbank">PowerBank</option>
+              </select>
+        </div>
+    </div>
+
+    <div class="row justify-content-md-center mt-5">
+        <div class="col col-lg-1 mt-2">
+         PARAMS:
+        </div>
+        <div class="col col-lg-3">
+            <div class="row row-cols-3 text-center" >
+                <div class="col">
+            <input type="radio" name="params" value="name">
+            <label for="vehicle">name</label>
+                    </div>
+                <div class="col">
+            <input type="radio" name="params" value="price">
+            <label for="vehicle">price</label>
+                     </div>
+                <div class="col">
+            <input checked type="radio" name="params" value="all">
+            <label for="vehicle">all</label>
+                     </div>
+                </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-md-center mt-5">
+        <div class="col col-lg-1 mt-2">
+         ID:
+        </div>
+        <div class="col col-lg-3">
+            <div class="d-grid gap-2">
+            <input type="number" min="0" name="id" value="">
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-md-center mt-5">
+        <div class="col col-lg-1 mt-2">
+        GET:
+        </div>
+        <div class="col col-lg-3">
+            <div class="d-grid gap-2">
+            <input type="submit" class="btn btn-info" onclick="this.form.submit(); this.disabled=true; this.value='In process…';" value="GET DATA">
+                </div>
+         </div>
+    </div>
+</div>
+    </form>
+<div class="container text-center mt-5">
+<div class="row justify-content-md-center mt-5">
+        <div class="col col-lg-8 mt-2">
+          <div class="col force-overflow" style="overflow: scroll;height: 550px">
+          {%  for el in api_answer['result'] %}
+                    <li>{{el}}</li>
+            {% endfor %}
+        </div>
+   </div>
+</div>
+</div>
+{% endblock %}
